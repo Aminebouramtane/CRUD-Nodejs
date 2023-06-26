@@ -1,11 +1,10 @@
 const express = require("express")
 const app = express();
 const connectionDb =require( "./db");
+const UserRouter = require("./routes")
 
-
-app.get("/",(req,res)=>{
-    res.send("data sended")
-})
+app.use(express.json())
+app.use("/",UserRouter)
 
 connectionDb();
 
