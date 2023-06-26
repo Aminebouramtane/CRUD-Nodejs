@@ -1,4 +1,4 @@
-const User = require("../Model/User.model")
+const User = require("../Model/User.model");
 
 
 const UserController = {
@@ -12,12 +12,12 @@ const UserController = {
     },
     Store: async (req, res) => {
         try {
-            const {_id, name, age, role } = req.body;
-            const user = new User({
-                _id,
-                name,
-                age,
-                role
+            const {name, age, role } = req.body;
+            // res.json(name)
+            const user =User.insert({
+                name:"amine",
+                age:21,
+                role:"admin"
             });
             await user.save();
             res.status(200).json({ msg: "Data has been added successfully" });
@@ -28,9 +28,9 @@ const UserController = {
     
     Update: async (req,res)=>{
         try {
-            const {_id,name,age,role}=req.body
+            const {name,age,role}=req.body
             const {idU}=req.params
-            const data = User.update({_id:idU},{$set:{_id:_id,name:name,age:age,role:role}})
+            const data = User.update({_id:idU},{$set:{name:name,age:age,role:role}})
             await data.save()
             res.status(200).json({msg:"data has been updated successfuly"})
         } catch (error) {
