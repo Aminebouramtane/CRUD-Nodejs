@@ -7,7 +7,7 @@ const UserController = {
             const Users =await User.find()
             res.json(Users)
         } catch (error) {
-            res.status(405).json({error:"internal server errorrrrrr"})
+            res.json({error:"internal server errorrrrrr"})
         }
     },
     Store: async (req, res) => {
